@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './bootstrap.min.css'
 import Header from './components/Header'
+import NewCite from './components/new-cite'
 
 
 class App extends Component{
@@ -8,10 +9,15 @@ class App extends Component{
 
   render() {
     return(
-      <div class="container"> 
+      <div className="container"> 
         <Header 
           tittle="Administrador de pacientes"
         />
+        <div className="row">
+          <div className="col-md-10 mx-auto">
+            <NewCite />
+          </div>
+        </div>
       </div>
     )
   }
