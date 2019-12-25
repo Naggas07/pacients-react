@@ -5,7 +5,16 @@ import NewCite from './components/new-cite'
 
 
 class App extends Component{
-  state = { }
+  state = { 
+    cites: []
+  }
+
+  createNewCite = data => {
+    const cites = [...this.state.cites, data]
+    this.setState({
+      cites
+    })
+  }
 
   render() {
     return(
@@ -15,7 +24,7 @@ class App extends Component{
         />
         <div className="row">
           <div className="col-md-10 mx-auto">
-            <NewCite />
+            <NewCite createNewCite={this.createNewCite} />
           </div>
         </div>
       </div>

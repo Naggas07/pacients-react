@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import uuid from 'uuid';
+
+
 
 export default class NewCite extends Component {
     state = {
@@ -34,7 +37,14 @@ export default class NewCite extends Component {
             return
         }
 
+        // generate objetc to parent 
+
+        const newCite = { ...this.state.cite}
+        newCite.id = uuid()
+
+        this.props.createNewCite(newCite)
         
+
     }
 
     render() {
