@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 
 
+const initialState = {
+    cite:{
+        name: '',
+        doctorName: '',
+        date: '',
+        hour: '',
+        sympthom: ''
+    },
+    error: false
+}
+
 
 export default class NewCite extends Component {
-    state = {
-        cite:{
-            name: '',
-            doctorName: '',
-            date: '',
-            hour: '',
-            sympthom: ''
-        },
-        error: false
-    }
+    state = { ...initialState }
 
     handleChange = e => {
         this.setState({
@@ -43,7 +45,12 @@ export default class NewCite extends Component {
         newCite.id = uuid()
 
         this.props.createNewCite(newCite)
-        
+
+        // reset state when ok 
+
+        this.setState({
+            ...initialState
+        })
 
     }
 
@@ -62,29 +69,29 @@ export default class NewCite extends Component {
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Nombre</label>
                             <div className="col-sm-8 col-lg-10">
-                                <input type="text" className="form-control" placeholder="Nombre del paciente" name="name" onChange={this.handleChange} value={this.state.name} />
+                                <input type="text" className="form-control" placeholder="Nombre del paciente" name="name" onChange={this.handleChange} value={this.state.cite.name} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Nombre Doctor</label>
                             <div className="col-sm-8 col-lg-10">
-                                <input type="text" className="form-control" placeholder="Nombre del Doctor" name="doctorName" onChange={this.handleChange} value={this.state.doctorName}/>
+                                <input type="text" className="form-control" placeholder="Nombre del Doctor" name="doctorName" onChange={this.handleChange} value={this.state.cite.doctorName}/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Fecha</label>
                             <div className="col-sm-8 col-lg-4">
-                                <input type="date" className="form-control"  name="date" onChange={this.handleChange} value={this.state.date}/>
+                                <input type="date" className="form-control"  name="date" onChange={this.handleChange} value={this.state.cite.date}/>
                             </div>
                             <label className="col-sm-4 col-lg-2 col-form-label">Hora</label>
                             <div className="col-sm-8 col-lg-4">
-                                <input type="time" className="form-control"  name="hour" onChange={this.handleChange} value={this.state.hour}/>
+                                <input type="time" className="form-control"  name="hour" onChange={this.handleChange} value={this.state.cite.hour}/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Síntomas</label>
                             <div className="col-sm-8 col-lg-10">
-                                <textarea className="form-control" name="sympthom" placeholder="describe los síntomas" onChange={this.handleChange} value={this.state.sympthom}></textarea>
+                                <textarea className="form-control" name="sympthom" placeholder="describe los síntomas" onChange={this.handleChange} value={this.state.cite.sympthom}></textarea>
                             </div>
                         </div>
                         <button className="btn btn-success btn-block py-3 mt-2">Pedir cita</button>
