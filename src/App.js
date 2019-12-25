@@ -17,6 +17,15 @@ class App extends Component{
     })
   }
 
+  deleteCite = id => {
+    const actualCites = [...this.state.cites]
+    const cites = actualCites.filter(cite => cite.id !== id)
+
+    this.setState({
+      cites
+    })
+  }
+
   render() {
     return(
       <div className="container"> 
@@ -28,7 +37,7 @@ class App extends Component{
             <NewCite createNewCite={this.createNewCite} />
           </div>
           <div className="mt-5 col-md-10 mx-auto">
-            <ListCites  cites={this.state.cites}/>
+            <ListCites  cites={this.state.cites} deleteCite={this.deleteCite}/>
           </div>
         </div>
       </div>
