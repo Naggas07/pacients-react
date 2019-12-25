@@ -2,7 +2,22 @@ import React, { Component } from 'react'
 
 export default class NewCite extends Component {
     state = {
+        cite:{
+            name: '',
+            doctorName: '',
+            date: '',
+            hour: '',
+            sympthom: ''
+        }
+    }
 
+    handleChange = e => {
+        this.setState({
+            cite:{
+                ...this.state.cite,
+                [e.target.name]: e.target.value
+            }
+        })
     }
     render() {
         return (
@@ -13,29 +28,29 @@ export default class NewCite extends Component {
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Nombre</label>
                             <div className="col-sm-8 col-lg-10">
-                                <input type="text" className="form-control" placeholder="Nombre del paciente" name="name" />
+                                <input type="text" className="form-control" placeholder="Nombre del paciente" name="name" onChange={this.handleChange} value={this.state.name} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Nombre Doctor</label>
                             <div className="col-sm-8 col-lg-10">
-                                <input type="text" className="form-control" placeholder="Nombre del Doctor" name="doctorName" />
+                                <input type="text" className="form-control" placeholder="Nombre del Doctor" name="doctorName" onChange={this.handleChange} value={this.state.doctorName}/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Fecha</label>
                             <div className="col-sm-8 col-lg-4">
-                                <input type="date" className="form-control"  name="date" />
+                                <input type="date" className="form-control"  name="date" onChange={this.handleChange} value={this.state.date}/>
                             </div>
                             <label className="col-sm-4 col-lg-2 col-form-label">Hora</label>
                             <div className="col-sm-8 col-lg-4">
-                                <input type="time" className="form-control"  name="hour" />
+                                <input type="time" className="form-control"  name="hour" onChange={this.handleChange} value={this.state.hour}/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Síntomas</label>
                             <div className="col-sm-8 col-lg-10">
-                                <textarea className="form-control" name="sympthom" placeholder="describe los síntomas"></textarea>
+                                <textarea className="form-control" name="sympthom" placeholder="describe los síntomas" onChange={this.handleChange} value={this.state.sympthom}></textarea>
                             </div>
                         </div>
                         <input type="sumbit" className="btn btn-success btn-block py-3 mt-2" value="Crear cita"></input>
