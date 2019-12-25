@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const Cite = ({cite, deleteCite}) => (
     <div className="media mt-3">
@@ -15,5 +16,10 @@ const Cite = ({cite, deleteCite}) => (
         <hr></hr>
     </div>
 )
+
+Cite.propTypes ={
+    cite: PropTypes.object.isRequired,
+    deleteCite: PropTypes.func.isRequired
+}
 
 export default Cite

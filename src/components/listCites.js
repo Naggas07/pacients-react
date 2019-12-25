@@ -1,5 +1,6 @@
 import React from 'react';
 import Cite from './Cite'
+import PropTypes from 'prop-types'
 
 const ListCites = ({cites, deleteCite}) => (
     <div className="card mt-5 py-5">
@@ -13,5 +14,10 @@ const ListCites = ({cites, deleteCite}) => (
         </div>
     </div>
 )
+
+ListCites.propTypes ={
+    cites: PropTypes.array.isRequired,
+    deleteCite: PropTypes.func.isRequired
+}
 
 export default ListCites

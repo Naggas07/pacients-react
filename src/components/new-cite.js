@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+import PropTypes from 'prop-types'
 
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
     },
     error: false
 }
+
 
 
 export default class NewCite extends Component {
@@ -100,4 +102,8 @@ export default class NewCite extends Component {
             </div>
         )
     }
+}
+
+NewCite.propTypes ={
+    createNewCite: PropTypes.func.isRequired
 }

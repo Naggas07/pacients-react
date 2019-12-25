@@ -10,6 +10,22 @@ class App extends Component{
     cites: []
   }
 
+  // aplication ready 
+  componentDidMount()  {
+    const citesLS = localStorage.getItem('cites')
+    if(citesLS){
+      this.setState({
+        cites: JSON.parse(citesLS)
+      })
+    } 
+  }
+
+  // when eliminate and add new cite 
+
+  componentDidUpdate() {
+    localStorage.setItem('cites', JSON.stringify(this.state.cites))
+  }
+
   createNewCite = data => {
     const cites = [...this.state.cites, data]
     this.setState({
