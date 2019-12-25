@@ -8,7 +8,8 @@ export default class NewCite extends Component {
             date: '',
             hour: '',
             sympthom: ''
-        }
+        },
+        error: false
     }
 
     handleChange = e => {
@@ -19,12 +20,29 @@ export default class NewCite extends Component {
             }
         })
     }
+
+    handleSubmit = e => {
+        e.preventDefault()
+
+        const { name, doctorName, date, hour, sympthom } = this.state.cite
+
+        if( name === '' || doctorName === '' || date === '' || hour === '' || sympthom === '') {
+            this.setState({
+                error: true
+            })
+
+            return
+        }
+
+        
+    }
+
     render() {
         return (
             <div className=" card mt-5 py-5">
                 <div className="card-body">
                     <h2 className="card-tittle text-center mb-5">Rellena el formulario para crear una nueva cita</h2>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Nombre</label>
                             <div className="col-sm-8 col-lg-10">
@@ -53,7 +71,7 @@ export default class NewCite extends Component {
                                 <textarea className="form-control" name="sympthom" placeholder="describe los síntomas" onChange={this.handleChange} value={this.state.sympthom}></textarea>
                             </div>
                         </div>
-                        <input type="sumbit" className="btn btn-success btn-block py-3 mt-2" value="Crear cita"></input>
+                        <button className="btn btn-success btn-block py-3 mt-2">Pedir cita</button>
                     </form>
                 </div>
             </div>
